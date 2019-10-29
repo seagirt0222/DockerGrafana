@@ -1,4 +1,4 @@
-FROM grafana/grafana:6.1.1
+FROM grafana/grafana:6.4.3
 USER root
 RUN apt-get update && apt-get install -y curl gettext-base && rm -rf /var/lib/apt/lists/*
 
