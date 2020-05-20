@@ -1,13 +1,5 @@
 version: '2.0'
-
 services:
-  influxdb:
-    build: influxdb
-    env_file: configuration.env
-    ports:
-      - '8086:8086'
-    volumes:
-      - influxdb_data:/var/lib/influxdb
   grafana:
     build: grafana
     env_file: configuration.env
@@ -17,16 +9,5 @@ services:
       - '3000:3000'
     volumes:
       - grafana_data:/var/lib/grafana
-
-  portainer:
-        ports:
-            - '1086:9000'
-        volumes:
-            - '/var/run/docker.sock:/var/run/docker.sock'
-            - portainer_data:/data
-        image: portainer/portainer
-
 volumes:
   grafana_data: {}
-  influxdb_data: {}
-  portainer_data: {}
