@@ -6,16 +6,16 @@ services:
       - ./data/influxdb:/var/lib/influxdb
     ports:
       - "8086:8086"
-      
-  grafana:
-    build: grafana
-    env_file: configuration.env
-    links:
-      - influxdb
+ grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
     ports:
-      - '3000:3000'
+      - "3000:3000"
+    env_file:
+     - 'configuration.env'
+    user: "0"
+    links:
+     - influxdb
     volumes:
-      - grafana_data:/var/lib/grafana
-volumes:
-  grafana_data: {}
- 
+     - /path/to/grafana.ini:/opt/bitnami/grafana/conf/grafana.ini
+
